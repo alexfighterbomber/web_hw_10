@@ -1,0 +1,30 @@
+{% extends 'quotes/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Мої додавання</h2>
+    
+    <h3>Автори</h3>
+    <ul>
+        {% for author in authors %}
+        <li>{{ author.fullname }} - {{ author.created_at|date:"d.m.Y" }}</li>
+        {% empty %}
+        <li>Ви ще не додали жодного автора</li>
+        {% endfor %}
+    </ul>
+    
+    <h3>Цитати</h3>
+    <ul>
+        {% for quote in quotes %}
+        <li>
+            "{{ quote.quote|truncatechars:50 }}" - {{ quote.author.fullname }}
+            <span class="badge bg-{% if quote.approved %}success{% else %}warning{% endif %}">
+                {% if quote.approved %}Схвалено{% else %}На модерації{% endif %}
+            </span>
+        </li>
+        {% empty %}
+        <li>Ви ще не додали жодної цитати</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
