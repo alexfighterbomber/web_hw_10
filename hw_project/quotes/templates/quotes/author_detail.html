@@ -23,29 +23,5 @@
             </div>
             {% endif %}
         </div>
-        
-        <!-- <h3 class="quotes-title">Quotes by {{ author.fullname }}:</h3>
-        
-        {% for quote in author_quotes %}
-        <div class="quote" itemscope itemtype="http://schema.org/CreativeWork">
-            <span class="text" itemprop="text">{{ quote.quote }}</span>
-            <div class="tags">
-                Tags:
-                {% for tag in quote.tags.all %}
-                <a class="tag" href="{% url 'quotes:quotes_by_tag' tag.name %}">{{ tag.name }}</a>
-                {% endfor %}
-            </div>
-        </div>
-        {% endfor %} -->
-    </div>
-    
-    <!-- <div class="col-md-4 tags-box">
-        <h2>Top Ten tags</h2>
-        {% for tag in top_tags %}
-        <span class="tag-item">
-            <a class="tag" style="font-size: {{ tag.font_size }}px" href="/tag/{{ tag.name }}/">{{ tag.name }}</a>
-        </span>
-        {% endfor %}
-    </div> -->
 </div>
 {% endblock %}

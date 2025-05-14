@@ -6,7 +6,7 @@ class UserAuthorForm(forms.ModelForm):
         model = UserAuthor
         fields = ['fullname', 'born_date', 'born_location', 'description']
         widgets = {
-            'description': forms.Textarea(attrs={'rows': 4}),
+            'description': forms.Textarea(attrs={'rows': 2}),
         }
 
 class UserQuoteForm(forms.ModelForm):
@@ -19,7 +19,7 @@ class UserQuoteForm(forms.ModelForm):
         model = UserQuote
         fields = ['quote', 'author']
         widgets = {
-            'quote': forms.Textarea(attrs={'rows': 3}),
+            'quote': forms.Textarea(attrs={'rows': 2}),
         }
     
     def __init__(self, user, *args, **kwargs):
