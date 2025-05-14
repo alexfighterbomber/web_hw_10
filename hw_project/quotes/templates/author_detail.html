@@ -32,7 +32,7 @@
             <div class="tags">
                 Tags:
                 {% for tag in quote.tags.all %}
-                <a class="tag" href="/tag/{{ tag.name }}/">{{ tag.name }}</a>
+                <a class="tag" href="{% url 'quotes:quotes_by_tag' tag.name %}">{{ tag.name }}</a>
                 {% endfor %}
             </div>
         </div>
