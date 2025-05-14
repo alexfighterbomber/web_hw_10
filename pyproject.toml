@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "web-hw-10"
+version = "0.1.0"
+description = "quoter"
+authors = ["alexfighterbomber <ssamsobi@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+django = "^5.2"
+pymongo = "^4.12.1"
+psycopg = "^3.2.8"
+psycopg2-binary = "^2.9.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

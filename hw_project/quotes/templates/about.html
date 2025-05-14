@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ author.fullname }} - Quotes
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="author-details">
+            <h1 class="author-title">{{ author.fullname }}</h1>
+            
+            <p><strong>Born:</strong> 
+                <span class="author-born-date">{{ author.born_date }}</span>
+                <span class="author-born-location">{{ author.born_location }}</span>
+            </p>
+            
+            <p><strong>Description:</strong></p>
+            <div class="author-description">
+                {{ author.description }}
+            </div>
+        </div>
+        
+        <h3 class="quotes-title">Quotes by {{ author.fullname }}:</h3>
+        
+        {% for quote in author_quotes %}
+        <div class="quote" itemscope="" itemtype="http://schema.org/CreativeWork">
+            <span class="text" itemprop="text">
+                {{ quote.quote }}
+            </span>
+            <div class="tags">
+                Tags:
+                {% for tag in quote.tags.all %}
+                <a class="tag" href="/tag/{{ tag.name }}/">{{ tag.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        
+        <nav>
+            <ul class="pager">
+                <li class="previous">
+                    <a class="{% if not author_quotes.has_previous %} disabled {% endif %}"
+                       href="{% if author_quotes.has_previous %} ?page={{ author_quotes.previous_page_number }} {% else %} # {% endif %}">
+                        <span aria-hidden="true">←</span> Previous
+                    </a>
+                </li>
+                
+                <li class="next">
+                    <a class="{% if not author_quotes.has_next %} disabled {% endif %}"
+                       href="{% if author_quotes.has_next %} ?page={{ author_quotes.next_page_number }} {% else %} # {% endif %}">
+                        Next <span aria-hidden="true">→</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="col-md-4 tags-box">
+        <h2>Top Ten tags</h2>
+        {% for tag in top_tags %}
+        <span class="tag-item">
+            <a class="tag" style="font-size: {{ tag.font_size }}px" href="/tag/{{ tag.name }}/">{{ tag.name }}</a>
+        </span>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
